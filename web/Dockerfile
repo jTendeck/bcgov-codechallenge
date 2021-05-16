@@ -13,6 +13,6 @@ RUN find / -perm +6000 -type f -not -path '/proc/*' -exec chmod a-s {} \; || tru
 
 WORKDIR $WORK_PATH
 
-EXPOSE 8101 9229
+EXPOSE 8888 9229
 
 CMD [ "npm", "start" ]
