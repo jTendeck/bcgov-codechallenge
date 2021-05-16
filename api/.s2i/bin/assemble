@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Using \$HOME = $HOME"
+
+echo "Listing $HOME"
+ls -lah $HOME
+
+echo "Listing Artifacts"
+ls -lah /tmp/src/
+
+# trigger built in assemble workflow
+/usr/libexec/s2i/assemble

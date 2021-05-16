@@ -1,0 +1,84 @@
+openapi: "3.0.0"
+info:
+  title: chsa api
+  version: 1.0.0
+servers:
+  - url: http://localhost:8100
+    description: local development server
+paths:
+  /ehlo:
+    get:
+      operationId: GetServerStatus
+      summary: Health probe
+      description: |-
+        This endpoint can be used to check that the server is
+        alive and well.
+      tags:
+        - Health
+      responses:
+        200:
+          description: The server is OK.
+  /api/v1/chsa/:
+    post:
+      operationId: QueryChsaResponseSet
+      summary: Query a chsa response set based on a given location
+      description: |-
+        Use this endpoint with a valid BC location
+        to query a chsa response set
+        which contains the area name and area code.
+      tags:
+        - Chsa
+      requestBody:
+        description: |
+          The request body contains a JSON formatted object with
+          2 fields longitude and latitude.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChsaQueriedPoint"
+      responses:
+        200:
+          description: The request was successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChsaResponseSet"
+        400:
+          description: The request was received but incorrect
+        422:
+          description: The request was received but incorrect
+        500:
+          description: Internal Error 
+components:
+  schemas:
+    ChsaQueriedPoint:
+      title: Chsa Queried Point
+      description: A representation of queried point / location
+      type: object
+      properties:
+        longitude:
+          type: number
+        latitude:
+          type: number
+      required:
+        - longitude
+        - latitude
+      example:
+        longitude: -123.711
+        latitude: 48.8277
+    ChsaResponseSet:
+      title: Chsa Response Set
+      description: A representation of response set
+      type: object
+      properties:
+        CMNTY_HLTH_SERV_AREA_CODE:
+          type: string
+        CMNTY_HLTH_SERV_AREA_NAME:
+          type: string
+      required:
+        - CMNTY_HLTH_SERV_AREA_CODE
+        - CMNTY_HLTH_SERV_AREA_NAME
+      example:
+        CMNTY_HLTH_SERV_AREA_CODE: "4124"
+        CMNTY_HLTH_SERV_AREA_NAME: Sooke

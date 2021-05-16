@@ -1,0 +1,10 @@
+{
+  "db": {
+    "port": 5432,
+    "database": "chsa",
+    "maxConnections": 10,
+    "idleTimeout": 10000,
+    "connectionTimeout": 2000
+  },
+  "geo": {}
+}

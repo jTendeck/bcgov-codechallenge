@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<div>
+  <form>
+    Please provide a valid BC location to query Community Health Service Area name.
+    <label
+      class="css-knfhfe"
+      for="longitude"
+    >
+      Longitude
+    </label>
+    <div
+      class=""
+    >
+      <input
+        class="css-4y926w"
+        name="longitude"
+        placeholder="-123.711"
+        type="text"
+        value=""
+      />
+    </div>
+    <label
+      class="css-knfhfe"
+      for="latitude"
+    >
+      Latitude
+    </label>
+    <div
+      class=""
+    >
+      <input
+        class="css-4y926w"
+        name="latitude"
+        placeholder="48.8277"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      style="display: block;"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

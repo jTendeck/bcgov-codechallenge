@@ -1,0 +1,21 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "WHSE_ADMIN_BOUNDARIES.BCHA_CMNTY_HEALTH_SERV_AREA_SP.141",
+            "geometry": null,
+            "properties": {
+                "HLTH_CHSA_SYSID": 141,
+                "CMNTY_HLTH_SERV_AREA_CODE": "4212",
+                "CMNTY_HLTH_SERV_AREA_NAME": "Central Cowichan",
+                "OBJECTID": 679
+            }
+        }
+    ],
+    "totalFeatures": 1,
+    "numberMatched": 1,
+    "numberReturned": 1,
+    "timeStamp": "2021-03-21T18:26:36.690Z",
+    "crs": null
+}

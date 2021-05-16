@@ -1,0 +1,114 @@
+version: "3.6"
+x-env: &defaults
+  NODE_ENV: development
+  NODE_PATH:
+  POSTGRESQL_HOST: chsa-pg
+  POSTGRESQL_PORT: 5432
+  POSTGRES_PASSWORD:
+  APP_DB_NAME:
+  APP_DB_USER:
+  APP_DB_PASSWORD:
+  FLYWAY_URL: jdbc:postgresql://chsa-pg/chsa
+  FLYWAY_USER:
+  FLYWAY_PASSWORD:
+  FLYWAY_CONNECT_RETRIES: 60
+  FLYWAY_PLACEHOLDER_REPLACEMENT: 'true'
+  FLYWAY_PLACEHOLDERS_USERNAME:
+  GEO_BASEURL:
+
+services:
+  web:
+    stdin_open: true
+    # tty: true
+    container_name: chsa-web
+    image: chsa/web
+    build:
+      context: web/
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./web
+        target: /opt/app
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 128000000
+    ports:
+      - 8101:8101
+    depends_on:
+      - api
+    environment:
+      PORT: 8101
+      NODE_ENV: development
+    command: >
+      bash -c "npm start"
+  api:
+    container_name: chsa-api
+    image: chsa/api
+    build:
+      context: api/
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api
+        target: /opt/app
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 128000000
+    ports:
+      - 8100:8100
+      - 9229:9229
+    depends_on:
+      - postgres
+    environment:
+      <<: *defaults
+      PORT: 8100
+    command: >
+      bash -c "sleep 5 && npm run dev:docker"
+  postgres:
+    container_name: chsa-pg
+    image: chsa/db
+    build:
+      context: db/
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./pg_data
+        target: /var/lib/postgresql/data
+      - type: bind
+        source: ./db
+        target: /opt/db
+    ports:
+      - 5432:5432
+    environment: *defaults
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "psql",
+          "-U",
+          "${APP_DB_USER}",
+          "-h",
+          "localhost",
+          "-d",
+          "${APP_DB_NAME}",
+          "-p",
+          "5432",
+          "-c",
+          "SELECT 1 AS result FROM pg_database WHERE datname='${APP_DB_NAME}'",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  flyway:
+    container_name: chsa-pg-migrations
+    image: flyway/flyway:7.4.0-alpine
+    command: migrate
+    volumes:
+      - type: bind
+        source: ./db/sql
+        target: /flyway/sql
+    depends_on:
+      - postgres
+    environment: *defaults

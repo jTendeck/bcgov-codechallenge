@@ -1,0 +1,79 @@
+# Local development environment setup
+---
+  - hosts: localhost
+    gather_facts: no
+    vars:
+      project_path: "{{ playbook_dir }}/.."
+    tasks:
+    - name: Set up ENV file at root path...
+      block:
+      - name: Delete any existing env file
+        file:
+          path: "{{ project_path }}/.env"
+          state: absent
+      - name: Generate db admin name
+        set_fact:
+          db_admin_name: "{{ lookup('password', '/dev/null chars=ascii_lowercase length=8') }}"
+      - name: Generate db admin password
+        set_fact:
+          db_admin_password: "{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=16') }}"
+      - name: Generate db root postgres password
+        set_fact:
+          db_postgres_password: "{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=16') }}"
+      - name: Create new env file
+        template:
+          src: "{{ playbook_dir }}/templates/env.j2"
+          dest: "{{ project_path }}/.env"
+          mode: 0644
+
+    - name: Set up DB service...
+      block:
+      - name: Delete any existing DB volume
+        file:
+          path: "{{ project_path }}/pg_data"
+          state: absent
+      - name: Create new persistent DB volume
+        file:
+          path: "{{ project_path }}/pg_data"
+          state: directory
+
+    - name: Set up API service...
+      block:
+      - name: Delete any existing API dependencies
+        file:
+          path: "{{ project_path }}/api/node_modules"
+          state: absent
+      - name: Download API dependencies
+        shell: |
+          cd {{ project_path }}/api && \
+          npm ci
+      - name: Build for API container
+        shell: |
+          cd {{ project_path }}/api && \
+          npm run build
+
+    - name: Set up WEB container...
+      block:
+      - name: Delete any WEB existing dependencies
+        file:
+          path: "{{ project_path }}/web/node_modules"
+          state: absent
+
+      - name: Download WEB dependencies
+        shell: |
+          cd {{ project_path }}/web && \
+          npm ci
+
+      - name: Build for WEB container
+        shell: |
+          cd {{ project_path }}/web && \
+          npm run build
+
+    - name: All set for local deployment
+      vars:
+        msg: |
+            You may run `docker-compose up` at project root directory now.
+            When the micro services are ready, visit localhost:8101 from a web browser,
+            Or start curl / postman to localhost:8100 if you wish to skip ui.
+      debug:
+        msg: "{{ msg.split('\n') }}"

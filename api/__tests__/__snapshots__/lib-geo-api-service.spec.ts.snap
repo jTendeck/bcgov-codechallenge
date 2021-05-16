@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Services queryChsaResponseSet() works correctly for invalid BC location 1`] = `[Error: invalid longtitude and latitude for a BC location,        you can use google map to search for the correct and try again ]`;
+
+exports[`Services queryChsaResponseSet() works correctly for valid BC location 1`] = `
+Object {
+  "CMNTY_HLTH_SERV_AREA_CODE": "4212",
+  "CMNTY_HLTH_SERV_AREA_NAME": "Central Cowichan",
+}
+`;
+
+exports[`Services queryChsaResponseSet() works correctly when the external api responds non json 1`] = `[Error: unable to query chsa response set]`;
+
+exports[`Services queryChsaResponseSet() works correctly when the external api responds non success status code 1`] = `[Error: Cannot read property 'content-type' of undefined]`;
