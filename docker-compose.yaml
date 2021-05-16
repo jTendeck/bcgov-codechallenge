@@ -76,9 +76,10 @@ services:
       - type: bind
         source: ./pg_data
         target: /var/lib/postgresql/data
-      - type: bind
-        source: ./db
-        target: /opt/db
+      # - type: volume
+      #   source: ./db
+      #   target: /opt/db
+      - postgresql:/db
     ports:
       - 5432:5432
     environment: *defaults
@@ -112,3 +113,6 @@ services:
     depends_on:
       - postgres
     environment: *defaults
+
+volumes:
+  postgresql:
