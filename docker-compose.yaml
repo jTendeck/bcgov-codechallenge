@@ -73,10 +73,13 @@ services:
       context: db/
       dockerfile: Dockerfile
     volumes:
+      # - type: bind
+      #   source: ./pg_data
+      #   target: /var/lib/postgresql/data
+      - pg_data:/pg_data
       - type: bind
-        source: ./pg_data
-        target: /var/lib/postgresql/data
-      - postgresql:/db
+        source: ./db
+        target: /opt/db
     ports:
       - 5432:5432
     environment: *defaults
@@ -112,4 +115,4 @@ services:
     environment: *defaults
 
 volumes:
-  postgresql:
+  pg_data:
