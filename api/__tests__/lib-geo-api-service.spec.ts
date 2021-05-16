@@ -41,10 +41,6 @@ describe('Services', () => {
 
   // TODO - create a test that uses const invalidBCLocationResponse
   it('queryChsaResponseSet() works correctly for invalid BC location', async () => {
-    cont queriedPoint = {
-      longitude: -113.5050,
-      latitude: 53.4880,
-    };
     const queriedPoint = {
       longitude: -113.5050,
       latitude: 53.4880,
