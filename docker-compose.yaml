@@ -34,11 +34,11 @@ services:
         tmpfs:
           size: 128000000
     ports:
-      - 8101:8101
+      - 8888:8888
     depends_on:
       - api
     environment:
-      PORT: 8101
+      PORT: 8888
       NODE_ENV: development
     command: >
       bash -c "npm start"

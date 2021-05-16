@@ -26,7 +26,7 @@ mkdir pg_data &&\
 Run `docker-compose up` at project root path.
 
 # Step 3
-Visit http://localhost:8101 via a web browser.
+Visit http://localhost:8888 via a web browser.
 
 If you wish to skip web ui and directly interact with api,\
 the service is at http://localhost:8100 and REST endpoint description can be found in [open api doc](api/public/doc/api/index.html)\
