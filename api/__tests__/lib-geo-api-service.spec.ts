@@ -45,6 +45,10 @@ describe('Services', () => {
       longitude: -113.5050,
       latitude: 53.4880,
     };
+    const queriedPoint = {
+      longitude: -113.5050,
+      latitude: 53.4880,
+    };
     // @ts-ignore
     mockAxios.fn.get.mockImplementationOnce(() =>
       Promise.resolve({
