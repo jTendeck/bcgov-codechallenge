@@ -76,9 +76,6 @@ services:
       - type: bind
         source: ./pg_data
         target: /var/lib/postgresql/data
-      # - type: volume
-      #   source: ./db
-      #   target: /opt/db
       - postgresql:/db
     ports:
       - 5432:5432
