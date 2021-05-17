@@ -28,3 +28,7 @@ jobs:
     - run: cd api/ && npm ci && npm run test && cd ..
 #     Uncomment after after web tests:
 #     - run: cd web/ && npm ci && npm run test && cd ..
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57cf800c8df0b3f50306c0e8d899a674b3cf9b80
