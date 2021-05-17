@@ -73,9 +73,6 @@ services:
       context: db/
       dockerfile: Dockerfile
     volumes:
-      # - type: bind
-      #   source: ./pg_data
-      #   target: /var/lib/postgresql/data
       - pg_data:/pg_data
       - type: bind
         source: ./db
