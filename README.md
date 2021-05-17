@@ -104,7 +104,7 @@ api-service.spec.ts` so that I can improve code coverage.
 > #5: As a technical analyst, I want to implement a Continuous Integration system whereby unit tests are run
 automatically, so that I can be sure of the code’s correctness without manual intervention.
 
-- Resolved. Originally used a pre-push hook, but changed to a GitHub Action. Only tests in the api directory are performed as there are none in the web directory. File location: `.github/workflows/tests.yml`.
+- Resolved. Originally used a pre-push hook, but changed to a GitHub Action. Only tests in the api directory are performed as there are none in the web directory. File located [here](.github/workflows/tests.yml).
 
 
 > #6: As a technical analyst, I want to change the persistent storage strategy of the database files currently
