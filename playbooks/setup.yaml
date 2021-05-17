@@ -73,7 +73,7 @@
       vars:
         msg: |
             You may run `docker-compose up` at project root directory now.
-            When the micro services are ready, visit localhost:8101 from a web browser,
+            When the micro services are ready, visit localhost:8888 from a web browser,
             Or start curl / postman to localhost:8100 if you wish to skip ui.
       debug:
         msg: "{{ msg.split('\n') }}"
