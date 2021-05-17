@@ -76,53 +76,52 @@ mkdir pg_data &&\
 
 #### Notes for each user story
 
-```
-#1: As a technical analyst, I want to ensure my npm package dependencies are free from severe security
-vulnerabilities, so that I can avoid introducing vulnerabilities and align with best practices.
-```
+
+> #1: As a technical analyst, I want to ensure my npm package dependencies are free from severe
+securityvulnerabilities, so that I can avoid introducing vulnerabilities and align with best practices.
+
 - As per the user story statement in the .pdf, only high vulnerabilities have been resolved, at least for the API dependencies. For the web directory, the source of the high risk vulnerability seems to be the `immer` package, a dependency of `react-dev-utils`, though this security vulnerability was not able to be resolved, least without breaking things.
 
-```
-#2: As an unauthenticated user, I want the TCP port that the front end is listening on to change from 8101 to
+
+> #2: As an unauthenticated user, I want the TCP port that the front end is listening on to change from 8101 to
 8888 so that I can avoid potential conflicts with other, running applications on my host.
-```
+
 - Resolved. 
 
-```
-#3: As an unauthenticated user, I want to submit a latitude/longitude request, so that I can receive the number
+
+> #3: As an unauthenticated user, I want to submit a latitude/longitude request, so that I can receive the number
 that is the Community Health Service Area Code that corresponds to where I live in BC.
-```
+
 - Resolved.
 
-```
-#4: As a technical analyst, I want to add a unit test for an invalid BC Location in the file `/api/__tests__/lib-geo-
+
+> #4: As a technical analyst, I want to add a unit test for an invalid BC Location in the file `/api/__tests__/lib-geo-
 api-service.spec.ts` so that I can improve code coverage.
-```
+
 - Resolved.
 
-```
-#5: As a technical analyst, I want to implement a Continuous Integration system whereby unit tests are run
+
+> #5: As a technical analyst, I want to implement a Continuous Integration system whereby unit tests are run
 automatically, so that I can be sure of the code’s correctness without manual intervention.
-```
+
 - Resolved. Originally used a pre-push hook, but changed to a GitHub Action. Only tests in the api directory are performed as there are none in the web directory.
 
-```
-#6: As a technical analyst, I want to change the persistent storage strategy of the database files currently
+
+> #6: As a technical analyst, I want to change the persistent storage strategy of the database files currently
 located in the directory ‘/pg_data’ from ‘bind mount’ to ‘docker volume’ so that I can separate the location
 of the data files from the application files.
-```
+
 - Resolved.
 
-```
-#7: As a technical analyst, I want a technical architecture diagram for the components of the application so
+
+> #7: As a technical analyst, I want a technical architecture diagram for the components of the application so
 that I can communicate its current state to the rest of the team.
-```
+
 - Resolved.
 
-```
-#8
-As a technical analyst who has expertise in making recommendations for emerging technology, I want to
+
+> #8: As a technical analyst who has expertise in making recommendations for emerging technology, I want to
 make suggestions to modify the technical architecture, so that I can improve the security and production
 readiness of the application. (certs, proxies, log file location, etc)
-```
+
 - Resolved.
