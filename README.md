@@ -80,7 +80,7 @@ mkdir pg_data &&\
 #1: As a technical analyst, I want to ensure my npm package dependencies are free from severe security
 vulnerabilities, so that I can avoid introducing vulnerabilities and align with best practices.
 ```
-- As per the user story statement in the .pdf, only high vulnerabilities have been resolved, at least for the API dependencies. For the web directory, the source of the high risk vulnerability seems to be the `immer` package, a dependency of `react-dev-utils`, though this vulnerability was not able to be resolved (least without breaking things).
+- As per the user story statement in the .pdf, only high vulnerabilities have been resolved, at least for the API dependencies. For the web directory, the source of the high risk vulnerability seems to be the `immer` package, a dependency of `react-dev-utils`, though this security vulnerability was not able to be resolved, least without breaking things.
 
 ```
 #2: As an unauthenticated user, I want the TCP port that the front end is listening on to change from 8101 to
