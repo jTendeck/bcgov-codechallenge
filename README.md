@@ -78,7 +78,7 @@ mkdir pg_data &&\
 
 
 > #1: As a technical analyst, I want to ensure my npm package dependencies are free from severe
-securityvulnerabilities, so that I can avoid introducing vulnerabilities and align with best practices.
+security vulnerabilities, so that I can avoid introducing vulnerabilities and align with best practices.
 
 - As per the user story statement in the .pdf, only high vulnerabilities have been resolved, at least for the API dependencies. For the web directory, the source of the high risk vulnerability seems to be the `immer` package, a dependency of `react-dev-utils`, though this security vulnerability was not able to be resolved, least without breaking things.
 
@@ -104,7 +104,7 @@ api-service.spec.ts` so that I can improve code coverage.
 > #5: As a technical analyst, I want to implement a Continuous Integration system whereby unit tests are run
 automatically, so that I can be sure of the code’s correctness without manual intervention.
 
-- Resolved. Originally used a pre-push hook, but changed to a GitHub Action. Only tests in the api directory are performed as there are none in the web directory.
+- Resolved. Originally used a pre-push hook, but changed to a GitHub Action. Only tests in the api directory are performed as there are none in the web directory. File location: `.github/workflows/tests.yml`.
 
 
 > #6: As a technical analyst, I want to change the persistent storage strategy of the database files currently
