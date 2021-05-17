@@ -41,13 +41,9 @@ describe('Services', () => {
 
   // TODO - create a test that uses const invalidBCLocationResponse
   it('queryChsaResponseSet() works correctly for invalid BC location', async () => {
-    // const queriedPoint = {
-    //   longitude: -113.5050,
-    //   latitude: 53.4880,
-    // };
-    const queriedPoint = {
-      longitude: -123.711,
-      latitude: 48.8277,
+    const invalidQueriedPoint = {
+      longitude: -113.5050,
+      latitude: 53.4880,
     };
     // @ts-ignore
     mockAxios.fn.get.mockImplementationOnce(() =>
@@ -56,14 +52,14 @@ describe('Services', () => {
         headers,
       })
     );
-    
-    const result = await geo.fetchChsaResponseSet(queriedPoint);
 
-    expect(result).toMatchSnapshot();
+    const invalidLocationRes = await geo.fetchChsaResponseSet(invalidQueriedPoint);
+
+    expect(invalidLocationRes).toMatchSnapshot();
     // @ts-ignore
     expect(mockAxios.fn.get).toHaveBeenCalledTimes(1);
   });
-
+  
 
   it('queryChsaResponseSet() works correctly for valid BC location', async () => {
     const queriedPoint = {
