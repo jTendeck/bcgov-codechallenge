@@ -67,12 +67,8 @@ Due to a quick turnaround, these items are yet to be mature:
 
 ### Developer Notes
 
-- Issues were encountered using Ansible, but running the following command worked (same command as above):
-```
-mkdir pg_data &&\
-    cd api && npm ci && npm run build &&\
-    cd ../web && npm ci && npm run build
-```
+- I encountered some issues with Ansible on my machine. You may want to try it, but if it doesn't work, following the alternative build/deploy instructions ended up working.
+
 
 #### Notes for each user story
 
