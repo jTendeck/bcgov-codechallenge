@@ -41,9 +41,13 @@ describe('Services', () => {
 
   // TODO - create a test that uses const invalidBCLocationResponse
   it('queryChsaResponseSet() works correctly for invalid BC location', async () => {
+    // const queriedPoint = {
+    //   longitude: -113.5050,
+    //   latitude: 53.4880,
+    // };
     const queriedPoint = {
-      longitude: -113.5050,
-      latitude: 53.4880,
+      longitude: -123.711,
+      latitude: 48.8277,
     };
     // @ts-ignore
     mockAxios.fn.get.mockImplementationOnce(() =>
